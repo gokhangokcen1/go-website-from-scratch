@@ -1,0 +1,27 @@
+### Öğrenci oluştur
+POST http://localhost:3000/api/ogrenci
+Content-Type: application/json
+
+{
+  "ad": "Gökhan",
+  "soyad": "Gökcen",
+  "numara": "2028036",
+  "bolum": "Elektrik Elektronik Muh"
+}
+
+### Tüm öğrencileri listele
+GET http://localhost:3000/api/ogrenci
+
+### Tek öğrenci getir
+GET http://localhost:3000/api/ogrenci/4
+
+### Öğrenci güncelle
+PUT http://localhost:3000/api/ogrenci/4
+Content-Type: application/json
+
+{
+  "bolum": "Hukuk"
+}
+
+### Öğrenci sil
+DELETE http://localhost:3000/api/ogrenci/1
