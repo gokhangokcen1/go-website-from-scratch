@@ -60,11 +60,11 @@ async function kontrolEt() {
 
     <label>IP Adresi</label>
     <div class="ip-satiri">
-      <input v-model="ip" placeholder="Ornek: 192.168.1.10" />
+      <input v-model="ip" placeholder="Örnek: 192.168.1.10" />
       <button @click="mevcutIPKullan">Mevcut IP'yi Kullan</button>
     </div>
 
-    <label>Port Numarasi</label>
+    <label>Port Numarası</label>
     <div class="port-satiri">
       <input v-model="port" type="number" min="1" max="65535" />
       <select v-model="port">
@@ -75,7 +75,7 @@ async function kontrolEt() {
     </div>
 
     <button class="kontrol-butonu" @click="kontrolEt" :disabled="yukleniyor">
-      {{ yukleniyor ? 'Kontrol Ediliyor...' : 'Check' }}
+      {{ yukleniyor ? 'Kontrol Ediliyor...' : 'Tara' }}
     </button>
 
     <p v-if="hataMesaji" class="hata">{{ hataMesaji }}</p>

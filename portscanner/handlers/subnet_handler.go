@@ -33,7 +33,7 @@ func HesaplaSubnet(c fiber.Ctx) error {
 	ipBolunmus := strings.Split(req.IP, ".")
 	if len(ipBolunmus) != 4 {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": "Gecersiz IP formati (ornek: 192.168.1.1)",
+			"error": "Gecersiz IP formati (Örnek: 192.168.1.1)",
 		})
 	}
 

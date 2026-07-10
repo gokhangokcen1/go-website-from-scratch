@@ -1,10 +1,10 @@
 <script setup>
-import PortCheckerForm from '../components/PortCheckerForm.vue'
+import IPScannerForm from '../components/IPScannerForm.vue'
 </script>
 
 <template>
   <div class="sayfa">
-    <PortCheckerForm />
+    <IPScannerForm />
   </div>
 </template>
 

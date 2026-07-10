@@ -7,8 +7,8 @@ import (
 )
 
 func KontrolEt(ip string, port int) (bool, string) {
-	adres := fmt.Sprintf("%s:%d", ip, port)
-	timeout := 3 * time.Second
+	adres := fmt.Sprintf("%v:%v", ip, port)
+	timeout := 5 * time.Second
 
 	conn, err := net.DialTimeout("tcp", adres, timeout)
 	if err != nil {

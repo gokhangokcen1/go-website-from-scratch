@@ -6,7 +6,8 @@ import { RouterLink, RouterView } from 'vue-router'
   <nav>
     <RouterLink to="/">Ana Sayfa</RouterLink> |
     <RouterLink to="/subnetting">IP Subnetting</RouterLink> |
-    <RouterLink to="/portchecker">Port Checker</RouterLink>
+    <RouterLink to="/portchecker">Port Checker</RouterLink> |
+    <RouterLink to="/ipscanner">IP Scanner</RouterLink>
   </nav>
 
   <RouterView />

@@ -26,10 +26,10 @@ async function hesapla() {
 
 <template>
   <div>
-    <h1>IP Subnetting Hesaplayici</h1>
+    <h1>IP Subnetting Hesaplayıcı</h1>
 
     <form @submit.prevent="hesapla">
-      <input v-model="ip" placeholder="Ornek: 192.168.1.10" />
+      <input v-model="ip" placeholder="Örnek: 192.168.1.10" />
       <input v-model="cidr" type="number" min="0" max="32" placeholder="CIDR (ornek: 24)" />
       <button type="submit">Hesapla</button>
     </form>
@@ -113,5 +113,9 @@ table {
 td {
   border: 1px solid #ccc;
   padding: 8px;
+}
+h1 {
+  white-space: nowrap;
+  margin-bottom: 24px;
 }
 </style>

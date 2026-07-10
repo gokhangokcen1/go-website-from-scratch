@@ -171,3 +171,37 @@ func GetIPClass(ip string) string {
 		return "Unknown"
 	}
 }
+
+// binaryToUint32, 32 bitlik binary diziyi tek bir sayiya cevirir.
+// Bu, IP'ler arasinda "bir sonraki IP" seklinde artirma yapabilmemiz icin gerekli.
+func binaryToUint32(binary []int) uint32 {
+	var result uint32
+	for _, bit := range binary {
+		result = (result << 1) | uint32(bit)
+	}
+	return result
+}
+
+// uint32ToIP, bir sayiyi tekrar "x.x.x.x" formatina cevirir.
+func uint32ToIP(value uint32) string {
+	return strconv.Itoa(int(value>>24&0xFF)) + "." +
+		strconv.Itoa(int(value>>16&0xFF)) + "." +
+		strconv.Itoa(int(value>>8&0xFF)) + "." +
+		strconv.Itoa(int(value&0xFF))
+}
+
+// HostIPListesi, network adresi ile broadcast adresi ARASINDAKI
+// (ikisi haric) tum host IP'lerini bir dizi olarak dondurur.
+func HostIPListesi(ip string, cidr int) []string {
+	ipBolunmus := strings.Split(ip, ".")
+	binaryIP := DecToBinary(ipBolunmus)
+
+	netAddr := binaryToUint32(NetworkAddress(binaryIP, cidr))
+	broadAddr := binaryToUint32(BroadcastAddress(binaryIP, cidr))
+
+	var hostlar []string
+	for i := netAddr + 1; i < broadAddr; i++ {
+		hostlar = append(hostlar, uint32ToIP(i))
+	}
+	return hostlar
+}

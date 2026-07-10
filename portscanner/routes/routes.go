@@ -11,4 +11,7 @@ func SetupRoutes(app *fiber.App) {
 
 	api.Post("/portcheck", handlers.KontrolEtHandler)
 	api.Get("/myip", handlers.MevcutIP)
+
+	api.Post("/scan", handlers.TaraHandler)
+
 }

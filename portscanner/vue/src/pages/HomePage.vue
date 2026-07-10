@@ -6,10 +6,11 @@ const router = useRouter()
 
 <template>
   <div class="home">
-    <h1>Ag Araclari</h1>
+    <h1>Ağ Araçları</h1>
     <div class="butonlar">
       <button @click="router.push('/subnetting')">IP Subnetting</button>
       <button @click="router.push('/portchecker')">Port Checker</button>
+      <button @click="router.push('/ipscanner')">IP Scanner</button>
     </div>
   </div>
 </template>

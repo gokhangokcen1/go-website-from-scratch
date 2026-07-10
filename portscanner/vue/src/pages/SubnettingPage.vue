@@ -10,7 +10,7 @@ import SubnetForm from '../components/SubnetForm.vue'
 
 <style scoped>
 .sayfa {
-  max-width: 700px;
+  max-width: 20%;
   margin: 40px auto;
 }
 </style>
