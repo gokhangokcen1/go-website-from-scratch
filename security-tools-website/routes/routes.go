@@ -13,5 +13,6 @@ func SetupRoutes(app *fiber.App) {
 	api.Get("/myip", handlers.MevcutIP)
 
 	api.Post("/scan", handlers.TaraHandler)
+	api.Post("/sslcheck", handlers.SslKontrol)
 
 }

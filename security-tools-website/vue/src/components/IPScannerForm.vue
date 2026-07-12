@@ -7,7 +7,6 @@ const cidr = ref(24)
 const sonuclar = ref([])
 const hataMesaji = ref('')
 const taraniyor = ref(false)
-const yalakaModu = ref(false)
 
 
 
@@ -43,12 +42,6 @@ function toplamIP() { return Math.pow(2, 32 - Number(cidr.value)) - 2 }
       <button type="submit" :disabled="taraniyor" @click="yalakaModu = false">
         {{ taraniyor ? 'Taraniyor...' : 'Tara' }}
       </button>
-      <!-- GEREKİRSE BURAYI GİZLE -->
-       
-      <!-- <button type="submit" :disabled="taraniyor" @click="yalakaModu = true"
-      style="min-width: 240px; flex: 0 0 240px;">
-        {{ taraniyor ? 'Taraniyor...' : 'Tara (ama yalaka şekilde)' }}
-      </button> -->
 
     </form>
 
@@ -65,11 +58,6 @@ function toplamIP() { return Math.pow(2, 32 - Number(cidr.value)) - 2 }
           <th>Durum</th>
           <th>MAC Adresi</th>
           <th>Uretici</th>
-          <!-- <td v-if="yalakaModu">
-            <div style="min-width: 130px;">
-              
-            </div>
-          </td>    SİL -->
         </tr>
       </thead>
       <tbody>
@@ -80,7 +68,6 @@ function toplamIP() { return Math.pow(2, 32 - Number(cidr.value)) - 2 }
           </td>
           <td>{{ s.mac || '-' }}</td>
           <td>{{ s.uretici || '-' }}</td>
-          <!-- <td v-if="yalakaModu">{{ '' }}</td> -->
           
         </tr>
       </tbody>
