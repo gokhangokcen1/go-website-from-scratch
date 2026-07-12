@@ -122,6 +122,8 @@ async function kontrolEt() {
           <tr><td>Fingerprint (MD5)</td><td>{{ sonuc.Chain.Certs[0].FingerprintMD5 }}</td></tr>
         </tbody>
       </table>
+      <h2>Certificate</h2>
+      <pre>{{ sonuc.Chain.Certs[0].PEM }}</pre>
     </div>
   </div>
 </template>

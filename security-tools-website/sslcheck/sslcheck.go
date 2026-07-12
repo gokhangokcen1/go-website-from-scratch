@@ -9,11 +9,11 @@ import (
 	"crypto/sha1"
 	"crypto/tls"
 	"crypto/x509"
+	"encoding/pem"
 	"errors" // Sertifika gelmeme hatası için eklendi
 	"fmt"
 	"io"
 	"math/big"
-	"net"
 	"net/http"
 	"strings"
 	"time"
@@ -71,12 +71,8 @@ func CheckSSL(rawWebsite string) (*models.SSLReport, error) {
 }
 
 func FillGeneralInformation(gi *models.GeneralInformation, cert *x509.Certificate, issuer *x509.Certificate, connState *tls.ConnectionState, website string) {
-	ips, err := net.LookupIP(website)
-	if err == nil && len(ips) > 0 {
-		gi.ResolvesTo = ips[0].String()
-	} else {
-		gi.ResolvesTo = "Unresolved"
-	}
+
+	gi.ResolvesTo = website
 
 	gi.ExpirationDate = cert.NotAfter.Format(time.DateOnly)
 
@@ -148,6 +144,13 @@ func FillChainDetails(cd *models.ChainDetails, connState *tls.ConnectionState) {
 		oneCert.SignatureAlgorithm = cert.SignatureAlgorithm.String()
 		oneCert.FingerprintSHA1 = fmt.Sprintf("%x", sha1.Sum(cert.Raw))
 		oneCert.FingerprintMD5 = fmt.Sprintf("%x", md5.Sum(cert.Raw))
+
+		pemBytes := pem.EncodeToMemory(&pem.Block{
+			Type:  "CERTIFICATE",
+			Bytes: cert.Raw,
+		})
+		oneCert.PEM = string(pemBytes)
+
 		cd.Certs = append(cd.Certs, oneCert)
 	}
 }
@@ -170,7 +173,7 @@ func formatSerial(sn *big.Int) string {
 
 func checkRevocation(leaf *x509.Certificate, issuer *x509.Certificate) string {
 	if issuer == nil {
-		return "Unknown" // "(No Issuer)" silindi, UI'da daha temiz duracak
+		return "Unknown"
 	}
 
 	if len(leaf.OCSPServer) == 0 {

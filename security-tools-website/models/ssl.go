@@ -49,6 +49,7 @@ type ChainCert struct {
 	SignatureAlgorithm string
 	FingerprintSHA1    string
 	FingerprintMD5     string
+	PEM                string
 }
 
 type ChainDetails struct {
@@ -62,3 +63,22 @@ type SSLReport struct {
 	By      IssuedBy
 	Chain   ChainDetails
 }
+
+// type ChainCert struct {
+// 	Issuer                string
+// 	CommonName            string
+// 	Organization          string
+// 	Issued                string
+// 	Expires               string
+// 	SerialNumber          string
+// 	SignatureAlgorithm    string
+// 	FingerprintSHA1       string
+// 	FingerprintMD5        string
+// 	IsCA                  bool
+// 	KeyUsage              []string
+// 	ExtKeyUsage           []string
+// 	CRLDistributionPoints []string
+// 	OCSPServer            []string
+// 	IssuingCertificateURL []string
+//	PEM                   string
+// }
