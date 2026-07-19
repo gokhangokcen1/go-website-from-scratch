@@ -4,4 +4,5 @@
   - Subnet Calculator
   - Port Checker
   - SSL Checker
-  - Packet Sniffer & Analyzer 
+  - Packet Sniffer & Analyzer
+  - DNS Checker
