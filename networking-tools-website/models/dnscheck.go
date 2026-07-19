@@ -1,8 +1,5 @@
 package models
 
-// DNSFullResult, CheckAllRecords'un donduregi, TUM kayit tiplerini
-// bir arada tutan buyuk sonuc struct'i. omitempty her yerde -- bir
-// domain'de MX yoksa, JSON'da bos dizi degil, hic alan gorunmesin.
 type DNSFullResult struct {
 	Domain string `json:"domain"`
 
@@ -64,7 +61,6 @@ type CAARecord struct {
 	Value string `json:"value"`
 }
 
-// DNSCheckRequest, frontend'den gelen istegin govdesi.
 type DNSCheckRequest struct {
 	Domain string `json:"domain"`
 }

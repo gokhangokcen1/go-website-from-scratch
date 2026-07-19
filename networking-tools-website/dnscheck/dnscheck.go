@@ -8,23 +8,13 @@ import (
 	"github.com/gokhangokcen1/subnet-backend/models"
 )
 
-// dnsServer, sadece miekg/dns ile atilan sorgularda (SOA, DNSKEY, DS)
-// kullaniliyor. net.Lookup* stdlib fonksiyonlari bunu KULLANMIYOR,
-// onlar hep sistem DNS'ine soruyor -- bu bilerek birakilmis bir
-// tutarsizlik, kodun orijinal mantigi buydu.
 const dnsServer = "8.8.8.8:53"
 
-// CheckAllRecords, senin main()'deki tum sorgulari tek bir fonksiyonda
-// toplar, sonucu print etmek yerine models.DNSFullResult struct'ina
-// doldurur. subnet.go/portcheck.go pattern'iyle ayni: saf mantik,
-// fiber bagimsiz.
 func CheckAllRecords(host string) models.DNSFullResult {
 	result := models.DNSFullResult{Domain: host}
 
 	ips, _ := net.LookupIP(host)
 
-	// A ve AAAA -- ayni LookupIP cagrisindan ayristiriliyor (senin
-	// yaptigin gibi, IPv4 mu IPv6 mi diye To4() ile ayirt ediliyor)
 	for _, ip := range ips {
 		if ip.To4() != nil {
 			result.A = append(result.A, ip.String())
@@ -56,8 +46,6 @@ func CheckAllRecords(host string) models.DNSFullResult {
 		result.TXT = txts
 	}
 
-	// PTR -- senin kodundaki gibi, ilk bulunan IPv4 uzerinden (break ile
-	// dongu zaten ilk elemanda kesiliyordu, o mantigi koruyorum)
 	for _, ip := range ips {
 		if ip.To4() == nil {
 			continue
@@ -86,13 +74,6 @@ func CheckAllRecords(host string) models.DNSFullResult {
 
 	return result
 }
-
-// querySOA, queryDNSKEY, queryDS: senin generic query() fonksiyonunun
-// yerine, HER KAYIT TIPI ICIN AYRI fonksiyon yazdim. Neden: generic
-// query() fmt.Println ile ekrana basiyordu, JSON'a donecek bir struct
-// dondurmuyordu. Tek bir generic fonksiyonu "interface{} dondur" yapip
-// sonra type assertion yapmak yerine, her tipin kendi somut donus tipini
-// (models.SOARecord, vs.) belirlemek daha temiz ve type-safe.
 
 func querySOA(domain string) *models.SOARecord {
 	answers := exchangeQuery(domain, dns.TypeSOA)
@@ -159,9 +140,6 @@ func queryCAA(domain string) []models.CAARecord {
 	return result
 }
 
-// exchangeQuery: miekg/dns ile tek bir sorgu atan ortak yardimci.
-// Senin query() fonksiyonunun govdesi, sadece print yerine answer
-// listesini donduruyor.
 func exchangeQuery(domain string, recordType uint16) []dns.RR {
 	msg := new(dns.Msg)
 	msg.SetQuestion(dns.Fqdn(domain), recordType)
