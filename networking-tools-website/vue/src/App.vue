@@ -11,6 +11,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <RouterLink to="/sslcheck">SSL Checker</RouterLink>
     <RouterLink to="/wirehamsi">wirehamsi</RouterLink>
     <RouterLink to="/packet-sender">Packet Sender</RouterLink>
+    <RouterLink to="/dnschecker">DNS Checker</RouterLink>
   </nav>
 
   <RouterView />

@@ -36,4 +36,6 @@ func SetupRoutes(app *fiber.App) {
 	app.Post("/api/capture/start", handlers.StartCaptureHandler)
 	app.Post("/api/capture/stop", handlers.StopCaptureHandler)
 
+	api.Post("/dnscheck", handlers.CheckDNSHandler)
+
 }

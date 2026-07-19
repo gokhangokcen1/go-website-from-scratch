@@ -14,6 +14,7 @@ const router = useRouter()
       <button @click="router.push('/sslcheck')">SSL Checker</button>
       <button @click="router.push('/wirehamsi')">wirehamsi</button>
       <button @click="router.push('/packet-sender')">Packet Sender</button>
+      <button @click="router.push('/dnschecker')">DNS Checker</button>
     </div>
   </div>
 </template>
