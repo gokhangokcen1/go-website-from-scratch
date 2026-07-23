@@ -1,4 +1,4 @@
-# Projects: 
+# Projeler
 - **CRUD Student Management System** (GO Fiber + GORM + PostgreSQL + Vue.js)
 - **Networking tools**
   - **Subnet Calculator**
