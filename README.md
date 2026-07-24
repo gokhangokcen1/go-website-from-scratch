@@ -17,3 +17,5 @@
     - DNS kayıtlarını ve A kaydı konumlarını gösterir.
   - **Whois Checker**
     - Alan adı kayıt, kayıt firması ve iletişim bilgilerini gösterir.
+  - **SMTP Mail Sender**
+    - 25 portunu kullanarak LAN içerisindeki bir mail sunucusu aracılığı ile mail gönderme.   
