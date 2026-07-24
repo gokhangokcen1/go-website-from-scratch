@@ -8,6 +8,7 @@ import CapturePage from '@/pages/CapturePage.vue'
 import CrafterPage from '@/pages/CrafterPage.vue'
 import DnsCheckerPage from '../pages/DnsCheckerPage.vue'
 import WhoisPage from '../pages/WhoisPage.vue'
+import SmtpPage from '../pages/SmtpPage.vue'
 
 
 const routes = [
@@ -20,6 +21,7 @@ const routes = [
   { path: '/packet-sender', component: CrafterPage },
   { path: '/dnschecker', component: DnsCheckerPage },
   { path: '/whois', component: WhoisPage },
+  { path: '/smtp', component: SmtpPage },
 ]
 
 const router = createRouter({

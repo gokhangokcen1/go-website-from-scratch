@@ -5,7 +5,7 @@ const navigation = [
   ['/', 'Ana Sayfa'], ['/subnetting', 'Subnet'], ['/portchecker', 'Port'],
   ['/ipscanner', 'IP Tarama'], ['/sslcheck', 'SSL'], ['/wirehamsi', 'WireHamsi'],
   ['/packet-sender', 'Paket'], ['/dnschecker', 'DNS'],
-  ['/whois', 'WHOIS'],
+  ['/whois', 'WHOIS'], ['/smtp', 'SMTP'],
 ]
 </script>
 

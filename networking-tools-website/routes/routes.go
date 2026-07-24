@@ -38,5 +38,5 @@ func SetupRoutes(app *fiber.App) {
 
 	api.Post("/dnscheck", handlers.CheckDNSHandler)
 	api.Post("/whois", handlers.WhoisLookupHandler)
-
+	api.Post("/smtp/send", handlers.SendSMTPMessageHandler)
 }
